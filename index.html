@@ -24,17 +24,16 @@
     }
 
     .logo {
-      width: 100px; /* Reduzido pela metade */
+      width: 100px;
       max-width: 80%;
       margin-bottom: 20px;
     }
 
     .save-the-date {
       font-size: 24px;
-      font-weight: bold; /* Agora em negrito */
       letter-spacing: 2px;
+      font-weight: bold;
       margin-bottom: 40px;
-      text-transform: uppercase; /* Deixa as letras maiúsculas */
     }
 
     .countdown {
@@ -42,6 +41,7 @@
       gap: 10px;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .time-box {
@@ -54,7 +54,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: bold;
     }
 
@@ -64,29 +64,47 @@
     }
 
     .separator {
-      font-size: 32px;
+      font-size: 28px;
       color: #1e1e1e;
+    }
+
+    .shirts {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .shirts img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
     }
 
     @media (max-width: 600px) {
       .time-box {
         width: 60px;
         height: 80px;
-        font-size: 24px;
+        font-size: 20px;
       }
 
       .separator {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       .save-the-date {
         font-size: 20px;
       }
+
+      .shirts img {
+        width: 120px;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="logoblack.png" alt="Logo" class="logo" />
+  <img src="newlogo.png" alt="Logo" class="logo" />
   <div class="save-the-date">SAVE THE DATE</div>
   <div class="countdown" id="countdown">
     <div class="time-box">
@@ -105,9 +123,14 @@
     </div>
     <div class="separator">:</div>
     <div class="time-box">
-      <div id="seconds">00</div> <!-- Adicionado os segundos -->
+      <div id="seconds">00</div>
       <div class="label">SECONDS</div>
     </div>
+  </div>
+
+  <div class="shirts">
+    <img src="wshirt.jpg" alt="White Shirt" />
+    <img src="bshirt.png" alt="Black Shirt" />
   </div>
 
   <script>
@@ -124,17 +147,16 @@
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60); // Adicionada a contagem de segundos
+      const seconds = Math.floor((diff / 1000) % 60);
 
       document.getElementById("days").textContent = String(days).padStart(2, '0');
       document.getElementById("hours").textContent = String(hours).padStart(2, '0');
       document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0'); // Atualizando segundos
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000); // Atualiza a cada 1 segundo (para os segundos)
+    setInterval(updateCountdown, 1000); // Atualiza a cada segundo
   </script>
 </body>
 </html>
-
