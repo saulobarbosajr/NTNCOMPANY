@@ -20,6 +20,7 @@
         #countdown {
             display: flex;
             gap: 10px;
+            justify-content: center;
         }
         .countdown-item {
             background-color: #000;
@@ -49,7 +50,7 @@
             text-align: center;
         }
         .logo img {
-            width: 70px;
+            width: 80px;
             height: 20px;
             margin-bottom: 20px;
         }
@@ -68,7 +69,7 @@
             width: 100%;
         }
         .image-container img {
-            max-width: 45%;
+            max-width: 30%; /* Diminuindo ainda mais o tamanho das imagens */
             height: auto;
         }
 
@@ -91,7 +92,7 @@
                 font-size: 36px;
             }
             .logo img {
-                width: 50px;
+                width: 60px;
                 height: auto;
             }
             .separator {
@@ -101,7 +102,7 @@
                 gap: 10px;
             }
             .image-container img {
-                max-width: 80%;
+                max-width: 45%; /* Diminuindo mais em telas menores também */
             }
         }
 
@@ -112,7 +113,7 @@
                 gap: 10px;
             }
             .image-container img {
-                max-width: 80%;
+                max-width: 60%; /* Ajustando para telas menores */
             }
         }
 
@@ -134,11 +135,14 @@
                 font-size: 28px;
             }
             .logo img {
-                width: 40px;
+                width: 50px;
                 height: auto;
             }
             .separator {
                 font-size: 20px;
+            }
+            .image-container img {
+                max-width: 75%; /* Ajustando para telas menores */
             }
         }
     </style>
@@ -173,7 +177,6 @@
             </div>
         </div>
 
-        <!-- Imagens atualizadas com os links do GitHub -->
         <div class="image-container">
             <img src="https://raw.githubusercontent.com/saulobarbosajr/NTNCOMPANY/main/wshirt.jpg" alt="Camiseta Branca">
             <img src="https://raw.githubusercontent.com/saulobarbosajr/NTNCOMPANY/main/bshirt.jpg" alt="Camiseta Preta">
