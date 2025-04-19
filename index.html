@@ -1,117 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva</title>
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Helvetica', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .countdown-container {
-            display: flex;
-            font-size: 50px;
-            font-weight: bold;
-            justify-content: space-around;
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 15px;
-        }
-
-        .countdown-item span {
-            font-size: 50px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .countdown-item label {
-            font-size: 20px;
-            color: #666;
-        }
-
-        .title {
-            font-size: 80px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            color: #000;
-        }
-
-        .logo {
-            margin-top: 20px;
-        }
-
-        .logo img {
-            width: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="title">SAVE THE DATE</div>
+    <div class="container">
+        <div class="logo">
+            <img src="logomenor.png" alt="Logo">
+        </div>
 
-    <div class="countdown-container">
-        <div class="countdown-item">
-            <span id="days">00</span>
-            <label>DIAS</label>
-        </div>
-        <div class="countdown-item">
-            <span id="hours">00</span>
-            <label>HORAS</label>
-        </div>
-        <div class="countdown-item">
-            <span id="minutes">00</span>
-            <label>MINUTOS</label>
-        </div>
-        <div class="countdown-item">
-            <span id="seconds">00</span>
-            <label>SEGUNDOS</label>
+        <div id="save-date">SAVE THE DATE</div>
+
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="flip-card">
+                    <div class="top" id="days-top">00</div>
+                    <div class="bottom" id="days-bottom">00</div>
+                    <div class="shadow"></div>
+                </div>
+                <div class="label">DIAS</div>
+            </div>
+            <div class="countdown-item">
+                <div class="flip-card">
+                    <div class="top" id="hours-top">00</div>
+                    <div class="bottom" id="hours-bottom">00</div>
+                    <div class="shadow"></div>
+                </div>
+                <div class="label">HORAS</div>
+            </div>
+            <div class="countdown-item">
+                <div class="flip-card">
+                    <div class="top" id="minutes-top">00</div>
+                    <div class="bottom" id="minutes-bottom">00</div>
+                    <div class="shadow"></div>
+                </div>
+                <div class="label">MINUTOS</div>
+            </div>
+            <div class="countdown-item">
+                <div class="flip-card">
+                    <div class="top" id="seconds-top">00</div>
+                    <div class="bottom" id="seconds-bottom">00</div>
+                    <div class="shadow"></div>
+                </div>
+                <div class="label">SEGUNDOS</div>
+            </div>
         </div>
     </div>
 
-    <div class="logo">
-        <img src="logomenor.png" alt="Logo">
-    </div>
-
-    <script>
-        const countdownDate = new Date("Apr 30, 2025 00:00:00").getTime();
-
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-            }
-        }, 1000);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
