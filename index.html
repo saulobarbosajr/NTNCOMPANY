@@ -24,15 +24,17 @@
     }
 
     .logo {
-      width: 200px;
+      width: 100px; /* Reduzido pela metade */
       max-width: 80%;
       margin-bottom: 20px;
     }
 
     .save-the-date {
       font-size: 24px;
+      font-weight: bold; /* Agora em negrito */
       letter-spacing: 2px;
       margin-bottom: 40px;
+      text-transform: uppercase; /* Deixa as letras maiúsculas */
     }
 
     .countdown {
@@ -101,6 +103,11 @@
       <div id="minutes">00</div>
       <div class="label">MINUTES</div>
     </div>
+    <div class="separator">:</div>
+    <div class="time-box">
+      <div id="seconds">00</div> <!-- Adicionado os segundos -->
+      <div class="label">SECONDS</div>
+    </div>
   </div>
 
   <script>
@@ -117,14 +124,16 @@
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60); // Adicionada a contagem de segundos
 
       document.getElementById("days").textContent = String(days).padStart(2, '0');
       document.getElementById("hours").textContent = String(hours).padStart(2, '0');
       document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0'); // Atualizando segundos
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 60000); // Atualiza a cada 1 minuto
+    setInterval(updateCountdown, 1000); // Atualiza a cada 1 segundo (para os segundos)
   </script>
 </body>
 </html>
