@@ -1,162 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Save The Date</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    body {
-      background-color: white;
-      font-family: 'Helvetica', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
+        #logo img {
+            max-width: 200px; /* Ajuste do tamanho do logo */
+        }
 
-    .logo {
-      width: 100px;
-      max-width: 80%;
-      margin-bottom: 20px;
-    }
+        #countdown {
+            font-size: 60px;
+            font-weight: bold;
+            color: #000;
+        }
 
-    .save-the-date {
-      font-size: 24px;
-      letter-spacing: 2px;
-      font-weight: bold;
-      margin-bottom: 40px;
-    }
+        #save-the-date {
+            font-size: 80px; /* Aumenta o tamanho da fonte */
+            font-weight: bold;
+            font-family: 'Helvetica', sans-serif; /* Fonte Helvetica em negrito */
+            margin-bottom: 20px;
+            text-transform: uppercase; /* Deixa o texto maiúsculo */
+            letter-spacing: 5px; /* Espaçamento entre as letras para mais destaque */
+        }
 
-    .countdown {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+        .image-container {
+            margin-top: 20px;
+        }
 
-    .time-box {
-      background-color: #1e1e1e;
-      color: white;
-      width: 80px;
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .label {
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    .separator {
-      font-size: 28px;
-      color: #1e1e1e;
-    }
-
-    .shirts {
-      margin-top: 40px;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .shirts img {
-      width: 150px;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .time-box {
-        width: 60px;
-        height: 80px;
-        font-size: 20px;
-      }
-
-      .separator {
-        font-size: 20px;
-      }
-
-      .save-the-date {
-        font-size: 20px;
-      }
-
-      .shirts img {
-        width: 120px;
-      }
-    }
-  </style>
+        .image-container img {
+            max-width: 200px;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-  <img src="newlogo.png" alt="Logo" class="logo" />
-  <div class="save-the-date">SAVE THE DATE</div>
-  <div class="countdown" id="countdown">
-    <div class="time-box">
-      <div id="days">00</div>
-      <div class="label">DAYS</div>
+
+    <!-- Logo Atualizado -->
+    <div id="logo">
+        <img src="logomenor.png" alt="Logo Menor">
     </div>
-    <div class="separator">:</div>
-    <div class="time-box">
-      <div id="hours">00</div>
-      <div class="label">HOURS</div>
+
+    <!-- Título de Save the Date -->
+    <div id="save-the-date">
+        SAVE THE DATE
     </div>
-    <div class="separator">:</div>
-    <div class="time-box">
-      <div id="minutes">00</div>
-      <div class="label">MINUTES</div>
+
+    <!-- Contagem Regressiva -->
+    <div id="countdown">
+        <span id="days">00</span> :
+        <span id="hours">00</span> :
+        <span id="minutes">00</span> :
+        <span id="seconds">00</span>
     </div>
-    <div class="separator">:</div>
-    <div class="time-box">
-      <div id="seconds">00</div>
-      <div class="label">SECONDS</div>
+
+    <!-- Imagens de Camisetas -->
+    <div class="image-container">
+        <img src="wshirt.jpg" alt="Camiseta Branca">
+        <img src="bshirt.jpg" alt="Camiseta Preta">
     </div>
-  </div>
 
-  <div class="shirts">
-    <img src="wshirt.jpg" alt="White Shirt" />
-    <img src="bshirt.png" alt="Black Shirt" />
-  </div>
+    <script>
+        // Configuração da data de contagem regressiva
+        const countdownDate = new Date("May 1, 2025 00:00:00").getTime();
 
-  <script>
-    function updateCountdown() {
-      const targetDate = new Date("2025-05-15T00:00:00");
-      const now = new Date();
-      const diff = targetDate - now;
+        const countdown = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
 
-      if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "<h2>Evento iniciado!</h2>";
-        return;
-      }
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+            // Atualiza os elementos da contagem regressiva
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
-      document.getElementById("days").textContent = String(days).padStart(2, '0');
-      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
-    }
+            // Caso a contagem termine
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "A contagem terminou!";
+            }
+        }, 1000);
+    </script>
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000); // Atualiza a cada segundo
-  </script>
 </body>
 </html>
