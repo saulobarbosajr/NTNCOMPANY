@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem Regressiva</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+    .time-box {
+      background-color: #111;
+      color: white;
+      font-size: 4rem;
+      font-weight: bold;
+      width: 100px;
+      height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin: 0 5px;
+    }
+    .label {
+      font-size: 0.8rem;
+      margin-top: 8px;
+      color: #ccc;
+    }
+    .separator {
+      font-size: 4rem;
+      font-weight: bold;
+      margin: 0 3px;
+    }
+    @media (max-width: 600px) {
+      .time-box {
+        font-size: 2.5rem;
+        width: 70px;
+        height: 90px;
+      }
+      .separator {
+        font-size: 2.5rem;
+        margin: 0 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <div class="time-box" id="days">00<div class="label">DAYS</div></div>
+    <div class="separator">:</div>
+    <div class="time-box" id="hours">00<div class="label">HOURS</div></div>
+    <div class="separator">:</div>
+    <div class="time-box" id="minutes">00<div class="label">MINUTES</div></div>
+    <div class="separator">:</div>
+    <div class="time-box" id="seconds">00<div class="label">SECONDS</div></div>
+  </div>
+
+  <script>
+    const countdown = () => {
+      const endDate = new Date("May 15, 2025 00:00:00").getTime();
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = (days < 10 ? "0" : "") + days + '<div class="label">DAYS</div>';
+      document.getElementById("hours").innerHTML = (hours < 10 ? "0" : "") + hours + '<div class="label">HOURS</div>';
+      document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes + '<div class="label">MINUTES</div>';
+      document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds + '<div class="label">SECONDS</div>';
+    };
+
+    setInterval(countdown, 1000);
+    countdown();
+  </script>
+</body>
+</html>
