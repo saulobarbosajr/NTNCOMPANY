@@ -49,10 +49,16 @@
             width: 100%;
             text-align: center;
         }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .logo img {
-            width: 80px;
-            height: auto; /* Alterado para auto para manter a proporção */
-            max-height: 80px; /* Adicionado para limitar a altura máxima */
+            width: auto;
+            height: auto;
+            max-width: 100px; /* Ajuste fino: Largura máxima */
+            max-height: 100px; /* Ajuste fino: Altura máxima */
             margin-bottom: 20px;
         }
         .separator {
@@ -93,9 +99,8 @@
                 font-size: 36px;
             }
             .logo img {
-                width: 60px;
-                max-height: 60px; /* Altura máxima ajustada para telas menores */
-                height: auto;
+                max-width: 80px;  /* Ajuste fino: Largura máxima em telas menores */
+                max-height: 80px; /* Ajuste fino: Altura máxima em telas menores */
             }
             .separator {
                 font-size: 28px;
@@ -137,9 +142,8 @@
                 font-size: 28px;
             }
             .logo img {
-                width: 50px;
-                max-height: 50px; /* Altura máxima ajustada para telas menores */
-                height: auto;
+                max-width: 60px; /* Ajuste fino: Largura máxima em telas menores */
+                max-height: 60px; /* Ajuste fino: Altura máxima em telas menores */
             }
             .separator {
                 font-size: 20px;
@@ -188,7 +192,8 @@
 
     <script>
         // Defina a data para a contagem regressiva
-        var countDownDate = new Date("Apr 20, 2025 00:00:00").getTime();
+        // Para 18 de maio de 2024
+        var countDownDate = new Date("May 18, 2024 00:00:00").getTime();
 
         // Atualize a contagem regressiva a cada 1 segundo
         var x = setInterval(function() {
