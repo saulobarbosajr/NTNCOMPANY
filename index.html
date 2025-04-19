@@ -51,7 +51,8 @@
         }
         .logo img {
             width: 80px;
-            height: 20px;
+            height: auto; /* Alterado para auto para manter a proporção */
+            max-height: 80px; /* Adicionado para limitar a altura máxima */
             margin-bottom: 20px;
         }
         .separator {
@@ -69,7 +70,7 @@
             width: 100%;
         }
         .image-container img {
-            max-width: 30%; /* Diminuindo ainda mais o tamanho das imagens */
+            max-width: 30%;
             height: auto;
         }
 
@@ -93,6 +94,7 @@
             }
             .logo img {
                 width: 60px;
+                max-height: 60px; /* Altura máxima ajustada para telas menores */
                 height: auto;
             }
             .separator {
@@ -102,7 +104,7 @@
                 gap: 10px;
             }
             .image-container img {
-                max-width: 45%; /* Diminuindo mais em telas menores também */
+                max-width: 45%;
             }
         }
 
@@ -113,7 +115,7 @@
                 gap: 10px;
             }
             .image-container img {
-                max-width: 60%; /* Ajustando para telas menores */
+                max-width: 60%;
             }
         }
 
@@ -136,13 +138,14 @@
             }
             .logo img {
                 width: 50px;
+                max-height: 50px; /* Altura máxima ajustada para telas menores */
                 height: auto;
             }
             .separator {
                 font-size: 20px;
             }
             .image-container img {
-                max-width: 75%; /* Ajustando para telas menores */
+                max-width: 75%;
             }
         }
     </style>
