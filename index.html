@@ -3,94 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contagem</title>
+    <title>Contagem Regressiva</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
             text-align: center;
         }
-
-        #logo img {
-            max-width: 200px; /* Ajuste do tamanho do logo */
-        }
-
         #countdown {
-            font-size: 60px;
+            font-size: 48px;
             font-weight: bold;
-            color: #000;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
         }
-
-        #save-the-date {
-            font-size: 80px; /* Aumenta o tamanho da fonte */
+        .header {
+            font-size: 36px;
+            font-family: 'Helvetica', sans-serif;
             font-weight: bold;
-            font-family: 'Helvetica', sans-serif; /* Fonte Helvetica em negrito */
+            margin: 20px 0;
+        }
+        .logo img {
+            width: 150px;
             margin-bottom: 20px;
-            text-transform: uppercase; /* Deixa o texto maiúsculo */
-            letter-spacing: 5px; /* Espaçamento entre as letras para mais destaque */
         }
-
-        .image-container {
-            margin-top: 20px;
+        .countdown-item {
+            display: inline-block;
+            margin: 0 15px;
         }
-
-        .image-container img {
-            max-width: 200px;
-            margin: 0 10px;
+        .countdown-item span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .countdown-item p {
+            font-size: 20px;
+            margin: 5px 0 0;
+        }
+        #save-date {
+            font-size: 50px;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+            margin: 20px 0;
+            display: inline-block;
+            width: 100%;
+        }
+        /* Logo menor */
+        .logo img {
+            width: 150px; /* Adapte a largura do logo */
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="logo">
+            <img src="logomenor.png" alt="Logo">
+        </div>
 
-    <!-- Logo Atualizado -->
-    <div id="logo">
-        <img src="logomenor.png" alt="Logo Menor">
-    </div>
+        <div id="save-date">SAVE THE DATE</div>
 
-    <!-- Título de Save the Date -->
-    <div id="save-the-date">
-        SAVE THE DATE
-    </div>
-
-    <!-- Contagem Regressiva -->
-    <div id="countdown">
-        <span id="days">00</span> :
-        <span id="hours">00</span> :
-        <span id="minutes">00</span> :
-        <span id="seconds">00</span>
-    </div>
-
-    <!-- Imagens de Camisetas -->
-    <div class="image-container">
-        <img src="wshirt.jpg" alt="Camiseta Branca">
-        <img src="bshirt.jpg" alt="Camiseta Preta">
+        <div id="countdown">
+            <div class="countdown-item">
+                <span id="days"></span>
+                <p>DIAS</p>
+            </div>
+            <div class="countdown-item">
+                <span id="hours"></span>
+                <p>HORAS</p>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes"></span>
+                <p>MINUTOS</p>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds"></span>
+                <p>SEGUNDOS</p>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Configuração da data de contagem regressiva
-        const countdownDate = new Date("May 1, 2025 00:00:00").getTime();
+        // Defina a data para a contagem regressiva
+        var countDownDate = new Date("Apr 20, 2025 00:00:00").getTime();
 
-        const countdown = setInterval(function() {
-            let now = new Date().getTime();
-            let distance = countdownDate - now;
+        // Atualize a contagem regressiva a cada 1 segundo
+        var x = setInterval(function() {
 
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-            // Atualiza os elementos da contagem regressiva
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
             document.getElementById("days").innerHTML = days;
             document.getElementById("hours").innerHTML = hours;
             document.getElementById("minutes").innerHTML = minutes;
             document.getElementById("seconds").innerHTML = seconds;
 
-            // Caso a contagem termine
+            // Quando a contagem regressiva terminar, mostre uma mensagem
             if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "A contagem terminou!";
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "O evento aconteceu!";
             }
         }, 1000);
     </script>
-
 </body>
 </html>
